@@ -3,227 +3,499 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bak Becak Kuat & Rapi | Bengkel Las Toba</title>
+    <meta name="description" content="Spesialis pembuatan bak becak kuat, rapi, dan tahan lama. Bengkel Las Toba Sibolga." />
 
-    <title>Bengkel Las Toba | Bengkel Las Terdekat di Toba</title>
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- SEO CORE -->
-    <meta name="description" content="Bengkel Las Toba - Jasa las pagar, kanopi, teralis, railing, pintu besi. Bengkel las terdekat di Toba dengan hasil rapi, kuat, dan terpercaya." />
-    <meta name="keywords" content="bengkel las terdekat, tukang las, jasa las pagar, kanopi besi, las panggilan, bengkel las toba" />
-    <meta name="robots" content="index, follow" />
-    <meta name="author" content="Bengkel Las Toba" />
-    <link rel="canonical" href="https://bengkel-lastoba.com" />
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
-    <!-- OPEN GRAPH (SOCIAL MEDIA) -->
-    <meta property="og:title" content="Bengkel Las Toba - Jasa Las Terdekat" />
-    <meta property="og:description" content="Pagar, kanopi, teralis, railing besi kuat & rapi. Tukang las profesional." />
-    <meta property="og:type" content="website" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- SMOOTH SCROLL -->
     <style>
       html {
         scroll-behavior: smooth;
       }
-    </style>
-
-    <!-- LOCAL BUSINESS SEO -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Bengkel Las Toba",
-        "telephone": "+6283856330491",
-        "description": "Jasa las pagar, kanopi, teralis, dan konstruksi besi profesional.",
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "ID"
-        },
-        "openingHours": "Mo-Su 08:00-17:00"
+      body {
+        font-family: 'Inter', sans-serif;
       }
-    </script>
+
+      .display {
+        font-family: 'Bebas Neue', sans-serif;
+        letter-spacing: 0.04em;
+      }
+
+      /* Steel texture diagonal lines */
+      .steel-bg {
+        background-color: #0a0a0a;
+        background-image: repeating-linear-gradient(-45deg, transparent, transparent 3px, rgba(255, 255, 255, 0.015) 3px, rgba(255, 255, 255, 0.015) 6px);
+      }
+
+      /* Glow accent */
+      .glow-yellow {
+        text-shadow: 0 0 24px rgba(234, 179, 8, 0.45);
+      }
+      .glow-box {
+        box-shadow:
+          0 0 0 1px rgba(234, 179, 8, 0.3),
+          0 4px 32px rgba(234, 179, 8, 0.08);
+      }
+
+      /* Spark divider */
+      .spark-divider {
+        height: 3px;
+        background: linear-gradient(90deg, transparent, #eab308 40%, #f97316 60%, transparent);
+      }
+
+      /* Card hover */
+      .card-hover {
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 32px rgba(234, 179, 8, 0.15);
+      }
+
+      /* WhatsApp float */
+      .wa-float {
+        background: linear-gradient(135deg, #25d366, #128c7e);
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .wa-float:hover {
+        transform: scale(1.07);
+        box-shadow: 0 6px 28px rgba(37, 211, 102, 0.55);
+      }
+
+      /* Map iframe */
+      .map-frame iframe {
+        width: 100%;
+        height: 400px;
+        border: 0;
+        display: block;
+      }
+
+      @media (min-width: 768px) {
+        .map-frame iframe {
+          height: 480px;
+        }
+      }
+
+      /* Noise overlay for hero */
+      .hero-noise::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none;
+        opacity: 0.35;
+      }
+
+      .badge-pill {
+        background: rgba(234, 179, 8, 0.12);
+        border: 1px solid rgba(234, 179, 8, 0.4);
+        color: #fbbf24;
+      }
+    </style>
   </head>
 
-  <body class="bg-[#0f0f10] text-gray-200">
-    <!-- FLOAT WHATSAPP -->
-    <a href="https://wa.me/6283856330491?text=Halo%20saya%20butuh%20jasa%20bengkel%20las" class="fixed bottom-5 right-5 bg-green-500 hover:bg-green-600 text-white px-5 py-4 rounded-full shadow-lg z-50"> 💬 WA </a>
+  <body class="bg-zinc-950 text-white">
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/6283856330491" target="_blank" class="wa-float fixed bottom-6 right-6 z-50 flex items-center gap-2 px-5 py-3 rounded-full font-bold text-white text-sm">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+        />
+        <path
+          d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.528 5.845L.057 23.882l6.187-1.448A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.863 9.863 0 01-5.031-1.378l-.361-.214-3.741.875.937-3.63-.235-.372A9.863 9.863 0 012.118 12C2.118 6.535 6.535 2.118 12 2.118c5.463 0 9.882 4.417 9.882 9.882 0 5.463-4.419 9.882-9.882 9.882z"
+        />
+      </svg>
+      WhatsApp
+    </a>
 
-    <!-- NAVBAR -->
-    <header class="sticky top-0 z-40 bg-black/70 backdrop-blur border-b border-zinc-800">
-      <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
-        <div class="font-bold text-white">🔧 Bengkel Las Toba</div>
-
-        <nav class="hidden md:flex gap-6 text-sm text-gray-300">
-          <a href="#layanan" class="hover:text-yellow-400">Layanan</a>
-          <a href="#portfolio" class="hover:text-yellow-400">Portfolio</a>
-          <a href="#tentang" class="hover:text-yellow-400">Tentang</a>
-          <a href="#order" class="hover:text-yellow-400">Order</a>
-          <a href="#lokasi" class="hover:text-yellow-400">Lokasi</a>
-        </nav>
-      </div>
-    </header>
+    <!-- Top Banner -->
+    <div class="bg-yellow-500 text-black text-center py-2.5 text-sm font-semibold tracking-wide">🔥 Konsultasi Gratis & Estimasi Harga Tanpa Biaya — Hubungi Sekarang</div>
 
     <!-- HERO -->
-    <section class="bg-gradient-to-br from-black via-zinc-900 to-black">
-      <div class="max-w-7xl mx-auto px-6 py-28">
-        <div class="w-20 h-1 bg-yellow-500 mb-6"></div>
-
-        <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">Bengkel Las Terdekat di Toba<br />Pagar, Kanopi & Teralis</h1>
-
-        <p class="text-gray-400 mt-6 max-w-xl text-lg">Jasa pengelasan profesional dengan hasil kuat, rapi, dan tahan lama untuk rumah, toko, dan proyek bangunan.</p>
-
-        <div class="mt-8 flex gap-4 flex-wrap">
-          <a href="#order" class="bg-yellow-500 text-black font-bold px-6 py-3 hover:bg-yellow-400 transition"> PESAN SEKARANG </a>
-
-          <a href="#layanan" class="border border-zinc-600 px-6 py-3 hover:bg-white hover:text-black transition"> LIHAT LAYANAN </a>
-        </div>
+    <section class="relative hero-noise steel-bg overflow-hidden pt-28 pb-32">
+      <!-- Background accent lines -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-20 -left-20 w-96 h-96 bg-yellow-500/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-80 h-80 bg-orange-500/5 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[2px] bg-gradient-to-r from-transparent via-yellow-500/20 to-transparent"></div>
       </div>
-    </section>
 
-    <!-- TRUST -->
-    <section class="py-16 border-y border-zinc-800 bg-[#0b0b0c]">
-      <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 text-center gap-8">
-        <div>
-          <h3 class="text-yellow-400 font-bold text-xl">✔ Berpengalaman</h3>
-          <p class="text-gray-400">5+ tahun di bidang pengelasan</p>
+      <div class="relative max-w-4xl mx-auto px-6 text-center">
+        <div data-aos="fade-down" data-aos-duration="600" class="badge-pill inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold mb-8">
+          <span class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
+          SPESIALIS PEMBUATAN BAK BECAK — SIBOLGA
         </div>
 
-        <div>
-          <h3 class="text-yellow-400 font-bold text-xl">✔ Material Kuat</h3>
-          <p class="text-gray-400">Besi berkualitas & tahan lama</p>
+        <h1 data-aos="fade-up" data-aos-delay="100" class="display text-6xl md:text-8xl glow-yellow leading-none mb-6">
+          Bak Becak<br />
+          <span class="text-yellow-400">Kuat & Rapi</span>
+        </h1>
+
+        <p data-aos="fade-up" data-aos-delay="200" class="text-zinc-400 text-lg md:text-xl max-w-xl mx-auto mb-10">Dibuat oleh tukang las berpengalaman. Material pilihan, hasil pengerjaan presisi, tahan lama untuk operasional harian.</p>
+
+        <div data-aos="fade-up" data-aos-delay="300" class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://wa.me/6283856330491" target="_blank" class="bg-yellow-400 hover:bg-yellow-300 text-black font-bold px-8 py-4 rounded-lg transition-colors text-lg"> TANYA HARGA SEKARANG </a>
+          <a href="#galeri" class="border border-zinc-600 hover:border-yellow-500/50 text-zinc-300 hover:text-yellow-400 font-semibold px-8 py-4 rounded-lg transition-colors text-lg"> Lihat Hasil Kerja </a>
         </div>
 
-        <div>
-          <h3 class="text-yellow-400 font-bold text-xl">✔ Garansi Pekerjaan</h3>
-          <p class="text-gray-400">Kepuasan pelanggan prioritas</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- LAYANAN -->
-    <section id="layanan" class="py-24">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="w-20 h-1 bg-yellow-500 mb-4"></div>
-        <h2 class="text-4xl font-bold mb-10">Layanan Kami</h2>
-
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="bg-[#161618] border border-zinc-800 p-6">
-            <h3 class="text-yellow-400 font-bold">Pagar Besi</h3>
-            <p class="text-gray-400 mt-2">Pagar rumah, toko, kantor dengan desain kuat & rapi.</p>
+        <!-- Stats bar -->
+        <div data-aos="fade-up" data-aos-delay="400" class="mt-16 grid grid-cols-3 gap-4 border border-zinc-800 rounded-xl p-6 bg-zinc-900/50 backdrop-blur-sm glow-box">
+          <div>
+            <div class="display text-4xl text-yellow-400">10+</div>
+            <div class="text-zinc-500 text-sm mt-1">Tahun Pengalaman</div>
           </div>
-
-          <div class="bg-[#161618] border border-zinc-800 p-6">
-            <h3 class="text-yellow-400 font-bold">Kanopi</h3>
-            <p class="text-gray-400 mt-2">Kanopi besi & baja ringan kokoh dan elegan.</p>
+          <div class="border-x border-zinc-800">
+            <div class="display text-4xl text-yellow-400">500+</div>
+            <div class="text-zinc-500 text-sm mt-1">Bak Dikerjakan</div>
           </div>
-
-          <div class="bg-[#161618] border border-zinc-800 p-6">
-            <h3 class="text-yellow-400 font-bold">Teralis & Railing</h3>
-            <p class="text-gray-400 mt-2">Keamanan sekaligus estetika bangunan.</p>
+          <div>
+            <div class="display text-4xl text-yellow-400">100%</div>
+            <div class="text-zinc-500 text-sm mt-1">Garansi Kerapian</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PORTFOLIO -->
-    <section id="portfolio" class="bg-[#0b0b0c] py-24 border-y border-zinc-800">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="w-20 h-1 bg-yellow-500 mb-4"></div>
-        <h2 class="text-4xl font-bold mb-10">Portfolio</h2>
+    <div class="spark-divider"></div>
+
+    <!-- MASALAH -->
+    <section class="py-24 steel-bg">
+      <div class="max-w-5xl mx-auto px-6">
+        <div data-aos="fade-up" class="text-center mb-14">
+          <p class="badge-pill inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3">MASALAH UMUM</p>
+          <h2 class="display text-5xl md:text-6xl">Yang Sering Dikeluhkan</h2>
+        </div>
 
         <div class="grid md:grid-cols-3 gap-5">
-          <div class="h-72 bg-zinc-800 border border-zinc-700 flex items-center justify-center text-gray-500">Pagar Besi</div>
-
-          <div class="h-72 bg-zinc-800 border border-zinc-700 flex items-center justify-center text-gray-500">Kanopi</div>
-
-          <div class="h-72 bg-zinc-800 border border-zinc-700 flex items-center justify-center text-gray-500">Teralis</div>
+          <div data-aos="fade-up" data-aos-delay="0" class="card-hover bg-zinc-900 border border-zinc-800 p-7 rounded-2xl flex gap-4 items-start">
+            <div class="w-10 h-10 bg-red-500/10 border border-red-500/20 rounded-lg flex items-center justify-center text-xl shrink-0">⚡</div>
+            <div>
+              <h3 class="font-bold text-white mb-1">Bak Cepat Rusak</h3>
+              <p class="text-zinc-500 text-sm">Material murah membuat bak retak dan berkarat dalam hitungan bulan.</p>
+            </div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="100" class="card-hover bg-zinc-900 border border-zinc-800 p-7 rounded-2xl flex gap-4 items-start">
+            <div class="w-10 h-10 bg-red-500/10 border border-red-500/20 rounded-lg flex items-center justify-center text-xl shrink-0">🔧</div>
+            <div>
+              <h3 class="font-bold text-white mb-1">Las Tidak Rapi</h3>
+              <p class="text-zinc-500 text-sm">Sambungan las yang kasar membuat tampilan becak terlihat tidak profesional.</p>
+            </div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="200" class="card-hover bg-zinc-900 border border-zinc-800 p-7 rounded-2xl flex gap-4 items-start">
+            <div class="w-10 h-10 bg-red-500/10 border border-red-500/20 rounded-lg flex items-center justify-center text-xl shrink-0">⏱</div>
+            <div>
+              <h3 class="font-bold text-white mb-1">Pengerjaan Lama</h3>
+              <p class="text-zinc-500 text-sm">Menunggu berminggu-minggu membuat operasional becak terhenti.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- TENTANG -->
-    <section id="tentang" class="py-24">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="w-20 h-1 bg-yellow-500 mb-4"></div>
-        <h2 class="text-4xl font-bold mb-6">Tentang Kami</h2>
+    <div class="spark-divider"></div>
 
-        <p class="text-gray-400 max-w-3xl">Bengkel Las Toba adalah jasa pengelasan profesional yang fokus pada kualitas dan kepuasan pelanggan.</p>
-      </div>
-    </section>
-
-    <!-- ORDER FORM -->
-    <section id="order" class="py-24 bg-[#0b0b0c]">
-      <div class="max-w-3xl mx-auto px-6">
-        <div class="w-20 h-1 bg-yellow-500 mb-4"></div>
-        <h2 class="text-4xl font-bold mb-8">Form Pemesanan</h2>
-
-        <form onsubmit="sendWA(event)" class="space-y-4 bg-[#161618] p-6 border border-zinc-800">
-          <input id="nama" class="w-full p-3 bg-black border border-zinc-700" placeholder="Nama" required />
-
-          <input id="alamat" class="w-full p-3 bg-black border border-zinc-700" placeholder="Alamat" required />
-
-          <select id="layanan" class="w-full p-3 bg-black border border-zinc-700">
-            <option>Pilih Layanan</option>
-            <option>Pagar Besi</option>
-            <option>Kanopi</option>
-            <option>Teralis</option>
-          </select>
-
-          <textarea id="catatan" class="w-full p-3 bg-black border border-zinc-700" placeholder="Catatan"></textarea>
-
-          <button class="w-full bg-yellow-500 text-black font-bold py-3 hover:bg-yellow-400">Kirim WhatsApp</button>
-        </form>
-      </div>
-    </section>
-
-    <section id="lokasi" class="py-24">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="w-20 h-1 bg-yellow-500 mb-4"></div>
-        <h2 class="text-4xl font-bold mb-6">Lokasi Kami</h2>
-
-        <!-- MAP CONTAINER RESPONSIVE -->
-        <div class="w-full overflow-hidden rounded-xl border border-zinc-700 shadow-xl hover:shadow-2xl transition">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.0084725320526!2d98.7941248749665!3d1.7258319982582362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302ef3ccc44bf3c3%3A0x44e2f5cff47953b9!2sBengkel%20Las%20Toba%20Sibolga!5e0!3m2!1sid!2sid!4v1781282240695!5m2!1sid!2sid"
-            class="w-full h-[350px] md:h-[450px]"
-            style="border: 0"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          >
-          </iframe>
+    <!-- SOLUSI -->
+    <section class="py-24 bg-zinc-950">
+      <div class="max-w-5xl mx-auto px-6">
+        <div data-aos="fade-up" class="text-center mb-14">
+          <p class="badge-pill inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3">KEUNGGULAN KAMI</p>
+          <h2 class="display text-5xl md:text-6xl">Solusi dari <span class="text-yellow-400">Bengkel Toba</span></h2>
         </div>
 
-        <!-- ALAMAT CARD -->
-        <div class="mt-6 text-gray-400">📍 Bengkel Las Toba - Sumatera Utara</div>
+        <div class="grid md:grid-cols-2 gap-5">
+          <div data-aos="fade-right" data-aos-delay="0" class="card-hover bg-zinc-900 border border-yellow-500/10 p-7 rounded-2xl flex gap-4 items-start glow-box">
+            <div class="w-10 h-10 bg-yellow-500/10 border border-yellow-500/20 rounded-lg flex items-center justify-center text-yellow-400 text-xl shrink-0">✦</div>
+            <div>
+              <h3 class="font-bold text-white mb-1">Material Berkualitas</h3>
+              <p class="text-zinc-400 text-sm">Besi dan pelat pilihan, tebal sesuai standar, tahan beban berat.</p>
+            </div>
+          </div>
+          <div data-aos="fade-left" data-aos-delay="50" class="card-hover bg-zinc-900 border border-yellow-500/10 p-7 rounded-2xl flex gap-4 items-start glow-box">
+            <div class="w-10 h-10 bg-yellow-500/10 border border-yellow-500/20 rounded-lg flex items-center justify-center text-yellow-400 text-xl shrink-0">✦</div>
+            <div>
+              <h3 class="font-bold text-white mb-1">Las Rapi & Kuat</h3>
+              <p class="text-zinc-400 text-sm">Dikerjakan tukang las berpengalaman, hasil bersih dan tidak mudah retak.</p>
+            </div>
+          </div>
+          <div data-aos="fade-right" data-aos-delay="100" class="card-hover bg-zinc-900 border border-yellow-500/10 p-7 rounded-2xl flex gap-4 items-start glow-box">
+            <div class="w-10 h-10 bg-yellow-500/10 border border-yellow-500/20 rounded-lg flex items-center justify-center text-yellow-400 text-xl shrink-0">✦</div>
+            <div>
+              <h3 class="font-bold text-white mb-1">Bisa Custom</h3>
+              <p class="text-zinc-400 text-sm">Ukuran, bentuk, dan desain bak bisa disesuaikan sesuai kebutuhan.</p>
+            </div>
+          </div>
+          <div data-aos="fade-left" data-aos-delay="150" class="card-hover bg-zinc-900 border border-yellow-500/10 p-7 rounded-2xl flex gap-4 items-start glow-box">
+            <div class="w-10 h-10 bg-yellow-500/10 border border-yellow-500/20 rounded-lg flex items-center justify-center text-yellow-400 text-xl shrink-0">✦</div>
+            <div>
+              <h3 class="font-bold text-white mb-1">Pengerjaan Cepat</h3>
+              <p class="text-zinc-400 text-sm">Estimasi waktu pengerjaan transparan. Becak Anda segera kembali beroperasi.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="bg-yellow-500 text-black py-20 text-center">
-      <h2 class="text-4xl font-extrabold mb-4">Siap Kerjakan Proyek Anda?</h2>
-      <a href="https://wa.me/6283856330491" class="bg-black text-white px-8 py-4 font-bold"> CHAT SEKARANG </a>
+    <div class="spark-divider"></div>
+
+    <!-- GALERI -->
+    <section class="py-24 steel-bg" id="galeri">
+      <div class="max-w-6xl mx-auto px-6">
+        <div data-aos="fade-up" class="text-center mb-14">
+          <p class="badge-pill inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3">PORTOFOLIO</p>
+          <h2 class="display text-5xl md:text-6xl">Galeri Hasil Pekerjaan</h2>
+          <p class="text-zinc-500 mt-3">Setiap bak dikerjakan dengan standar yang sama: kuat, rapi, dan tahan lama.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4">
+          <div data-aos="zoom-in" data-aos-delay="0" class="overflow-hidden rounded-xl bg-zinc-800 aspect-[4/3] relative group">
+            <img src="/images/gambar1.jpeg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Bak Becak 1" onerror="this.parentElement.classList.add('img-placeholder')" />
+            <div class="img-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <span class="text-sm font-semibold text-white">Bak Becak Custom</span>
+            </div>
+          </div>
+          <div data-aos="zoom-in" data-aos-delay="80" class="overflow-hidden rounded-xl bg-zinc-800 aspect-[4/3] relative group">
+            <img src="/images/gambar2.jpeg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Bak Becak 2" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <span class="text-sm font-semibold text-white">Las Rapi & Presisi</span>
+            </div>
+          </div>
+          <div data-aos="zoom-in" data-aos-delay="160" class="overflow-hidden rounded-xl bg-zinc-800 aspect-[4/3] relative group">
+            <img src="/images/gambar3.jpeg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Bak Becak 3" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <span class="text-sm font-semibold text-white">Material Tebal</span>
+            </div>
+          </div>
+          <div data-aos="zoom-in" data-aos-delay="0" class="overflow-hidden rounded-xl bg-zinc-800 aspect-[4/3] relative group">
+            <img src="/images/gambar4.jpeg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Bak Becak 4" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <span class="text-sm font-semibold text-white">Hasil Jadi</span>
+            </div>
+          </div>
+          <div data-aos="zoom-in" data-aos-delay="80" class="overflow-hidden rounded-xl bg-zinc-800 aspect-[4/3] relative group">
+            <img src="/images/gambar5.jpeg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Bak Becak 5" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <span class="text-sm font-semibold text-white">Siap Operasi</span>
+            </div>
+          </div>
+          <div data-aos="zoom-in" data-aos-delay="160" class="overflow-hidden rounded-xl bg-zinc-800 aspect-[4/3] relative group">
+            <img src="/images/gambar6.jpeg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Bak Becak 6" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <span class="text-sm font-semibold text-white">Tahan Lama</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-black py-6 text-center text-gray-500 border-t border-zinc-800">© 2026 Bengkel Las Toba</footer>
+    <div class="spark-divider"></div>
 
-    <!-- WHATSAPP SCRIPT -->
+    <!-- TESTIMONI -->
+    <section class="py-24 bg-zinc-950">
+      <div class="max-w-5xl mx-auto px-6">
+        <div data-aos="fade-up" class="text-center mb-14">
+          <p class="badge-pill inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3">ULASAN PELANGGAN</p>
+          <h2 class="display text-5xl md:text-6xl">Kata Mereka</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5">
+          <div data-aos="fade-up" data-aos-delay="0" class="card-hover bg-zinc-900 border border-zinc-800 p-7 rounded-2xl relative">
+            <div class="absolute top-5 right-6 text-yellow-400/20 text-5xl font-serif leading-none">"</div>
+            <div class="flex text-yellow-400 text-lg mb-4">★★★★★</div>
+            <p class="text-zinc-300 text-sm leading-relaxed mb-5">Bak becak saya sudah 2 tahun, tidak ada yang retak atau berkarat. Hasil lasnya bersih sekali. Puas banget sama hasilnya.</p>
+            <div class="flex items-center gap-3 border-t border-zinc-800 pt-4">
+              <div class="w-9 h-9 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-400 font-bold text-sm">B</div>
+              <div>
+                <div class="font-semibold text-white text-sm">Budi S.</div>
+                <div class="text-zinc-600 text-xs">Tukang Becak, Sibolga</div>
+              </div>
+            </div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="100" class="card-hover bg-zinc-900 border border-zinc-800 p-7 rounded-2xl relative">
+            <div class="absolute top-5 right-6 text-yellow-400/20 text-5xl font-serif leading-none">"</div>
+            <div class="flex text-yellow-400 text-lg mb-4">★★★★★</div>
+            <p class="text-zinc-300 text-sm leading-relaxed mb-5">Pengerjaan cepat, 3 hari sudah selesai. Saya pesan custom ukuran besar dan hasilnya sesuai ekspektasi. Harga juga wajar.</p>
+            <div class="flex items-center gap-3 border-t border-zinc-800 pt-4">
+              <div class="w-9 h-9 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-400 font-bold text-sm">A</div>
+              <div>
+                <div class="font-semibold text-white text-sm">Andi R.</div>
+                <div class="text-zinc-600 text-xs">Pemilik Armada Becak</div>
+              </div>
+            </div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="200" class="card-hover bg-zinc-900 border border-zinc-800 p-7 rounded-2xl relative">
+            <div class="absolute top-5 right-6 text-yellow-400/20 text-5xl font-serif leading-none">"</div>
+            <div class="flex text-yellow-400 text-lg mb-4">★★★★★</div>
+            <p class="text-zinc-300 text-sm leading-relaxed mb-5">Sudah langganan dari tahun 2021. Tiap bikin bak baru selalu ke Bengkel Toba. Kualitasnya konsisten dan pelayanannya ramah.</p>
+            <div class="flex items-center gap-3 border-t border-zinc-800 pt-4">
+              <div class="w-9 h-9 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-400 font-bold text-sm">H</div>
+              <div>
+                <div class="font-semibold text-white text-sm">Hendra P.</div>
+                <div class="text-zinc-600 text-xs">Pelanggan Setia</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="spark-divider"></div>
+
+    <!-- LOKASI -->
+    <section class="py-24 steel-bg">
+      <div class="max-w-6xl mx-auto px-6">
+        <div data-aos="fade-up" class="text-center mb-12">
+          <p class="badge-pill inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3">TEMUKAN KAMI</p>
+          <h2 class="display text-5xl md:text-6xl">Lokasi Bengkel</h2>
+          <p class="text-zinc-500 mt-3 max-w-md mx-auto">Bengkel Las Toba Sibolga — mudah dijangkau, parkir tersedia.</p>
+        </div>
+
+        <!-- Map card -->
+        <div data-aos="fade-up" data-aos-delay="100" class="rounded-2xl overflow-hidden border border-zinc-700 bg-zinc-900 shadow-2xl shadow-black/60">
+          <!-- Map header bar -->
+          <div class="flex items-center justify-between px-5 py-4 border-b border-zinc-800 bg-zinc-900">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 bg-yellow-500/10 border border-yellow-500/20 rounded-lg flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div>
+                <div class="font-semibold text-white text-sm">Bengkel Las Toba</div>
+                <div class="text-zinc-500 text-xs">Sibolga, Sumatera Utara</div>
+              </div>
+            </div>
+            <a
+              href="https://maps.google.com/maps?q=Bengkel+Las+Toba+Sibolga"
+              target="_blank"
+              class="text-xs text-yellow-400 hover:text-yellow-300 font-semibold border border-yellow-500/30 hover:border-yellow-500/60 px-3 py-1.5 rounded-lg transition-colors"
+            >
+              Buka di Maps →
+            </a>
+          </div>
+
+          <!-- Iframe -->
+          <div class="map-frame">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.0084725320526!2d98.7941248749665!3d1.7258319982582362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302ef3ccc44bf3c3%3A0x44e2f5cff47953b9!2sBengkel%20Las%20Toba%20Sibolga!5e0!3m2!1sid!2sid!4v1781321239760!5m2!1sid!2sid"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Lokasi Bengkel Las Toba Sibolga"
+            ></iframe>
+          </div>
+
+          <!-- Info bar bawah peta -->
+          <div class="grid grid-cols-3 divide-x divide-zinc-800 border-t border-zinc-800 bg-zinc-900/80">
+            <div class="px-4 py-4 text-center">
+              <div class="text-yellow-400 font-bold text-sm">Senin – Sabtu</div>
+              <div class="text-zinc-500 text-xs mt-0.5">08.00 – 17.00 WIB</div>
+            </div>
+            <div class="px-4 py-4 text-center">
+              <a href="https://wa.me/6283856330491" target="_blank" class="text-yellow-400 font-bold text-sm hover:text-yellow-300 transition-colors"> 0838-5633-0491 </a>
+              <div class="text-zinc-500 text-xs mt-0.5">Hubungi via WA</div>
+            </div>
+            <div class="px-4 py-4 text-center">
+              <div class="text-yellow-400 font-bold text-sm">Sibolga</div>
+              <div class="text-zinc-500 text-xs mt-0.5">Sumatera Utara</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="spark-divider"></div>
+
+    <!-- FORM KRITIK & SARAN -->
+    <section class="py-24 bg-zinc-950" id="order">
+      <div class="max-w-xl mx-auto px-6">
+        <div data-aos="fade-up" class="text-center mb-10">
+          <p class="badge-pill inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3">MASUKAN</p>
+          <h2 class="display text-5xl md:text-6xl">Kritik & Saran</h2>
+          <p class="text-zinc-500 mt-3 text-sm">Masukan Anda membantu kami terus berkembang.</p>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="100" class="bg-zinc-900 border border-zinc-800 p-8 rounded-2xl">
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs font-semibold text-zinc-400 mb-2 uppercase tracking-wider">Nama</label>
+              <input
+                id="nama"
+                class="w-full px-4 py-3.5 bg-zinc-950 border border-zinc-700 focus:border-yellow-500/50 focus:outline-none focus:ring-1 focus:ring-yellow-500/30 rounded-xl text-white placeholder:text-zinc-600 transition-colors"
+                placeholder="Nama Anda"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-zinc-400 mb-2 uppercase tracking-wider">Pesan</label>
+              <textarea
+                id="pesan"
+                rows="5"
+                class="w-full px-4 py-3.5 bg-zinc-950 border border-zinc-700 focus:border-yellow-500/50 focus:outline-none focus:ring-1 focus:ring-yellow-500/30 rounded-xl text-white placeholder:text-zinc-600 transition-colors resize-none"
+                placeholder="Tulis kritik atau saran Anda di sini..."
+              ></textarea>
+            </div>
+            <button onclick="kirimSaran()" class="w-full bg-yellow-400 hover:bg-yellow-300 active:bg-yellow-500 text-black font-bold py-4 rounded-xl transition-colors text-base">Kirim via WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section data-aos="fade-up" class="py-24 bg-zinc-950 relative overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-yellow-500/30 to-transparent"></div>
+        <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-96 h-96 bg-yellow-500/5 rounded-full blur-3xl"></div>
+      </div>
+      <div class="relative max-w-2xl mx-auto px-6 text-center">
+        <div class="display text-6xl md:text-7xl glow-yellow mb-4">Siap Pesan?</div>
+        <p class="text-zinc-400 mb-8 text-lg">Konsultasi gratis, estimasi harga tanpa biaya. Balas dalam hitungan menit.</p>
+        <a href="https://wa.me/6283856330491" target="_blank" class="inline-flex items-center gap-3 bg-yellow-400 hover:bg-yellow-300 text-black font-bold px-10 py-5 rounded-xl transition-colors text-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.528 5.845L.057 23.882l6.187-1.448A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.863 9.863 0 01-5.031-1.378l-.361-.214-3.741.875.937-3.63-.235-.372A9.863 9.863 0 012.118 12C2.118 6.535 6.535 2.118 12 2.118c5.463 0 9.882 4.417 9.882 9.882 0 5.463-4.419 9.882-9.882 9.882z"
+            />
+          </svg>
+          CHAT WHATSAPP SEKARANG
+        </a>
+      </div>
+    </section>
+
+    <footer class="py-6 text-center text-zinc-600 text-sm border-t border-zinc-900">© 2026 Bengkel Las Toba Sibolga — Spesialis Bak Becak</footer>
+
     <script>
-      function sendWA(e) {
-        e.preventDefault();
+      // Init AOS
+      AOS.init({
+        duration: 700,
+        once: true,
+        easing: 'ease-out-cubic',
+        offset: 60,
+      });
 
-        const nama = document.getElementById('nama').value;
-        const layanan = document.getElementById('layanan').value;
-
-        const pesan = `Halo Bengkel Las Toba
-Nama: ${nama}
-Layanan: ${layanan}`;
-
-        const url = `https://wa.me/6283856330491?text=${encodeURIComponent(pesan)}`;
-        window.open(url, '_blank');
+      // WhatsApp form
+      function kirimSaran() {
+        const nama = document.getElementById('nama').value.trim();
+        const pesan = document.getElementById('pesan').value.trim();
+        if (!nama || !pesan) {
+          alert('Mohon isi nama dan pesan terlebih dahulu.');
+          return;
+        }
+        const text = `Kritik & Saran\nNama: ${nama}\n\n${pesan}`;
+        window.open(`https://wa.me/6283856330491?text=${encodeURIComponent(text)}`, '_blank');
       }
     </script>
-
-    <!-- VITE -->
-    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
